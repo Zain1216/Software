@@ -1,0 +1,67 @@
+
+<html>
+  <head>
+    <title>Remove Symbols and Keywords</title>
+    <style>
+      #input-box,
+      #modified-box {
+        width: 100%;
+        height: 150px;
+      }
+    </style>
+    <script>
+      function removeMessages() {
+        var inputBox = document.getElementById("input-box");
+        var modifiedBox = document.getElementById("modified-box");
+        var keywords = [
+          "name",
+          "number",
+          "cod",
+          "description",
+          "address",
+          "Details",
+          "Replacement",
+          "contact",
+          "contact no","Mobile",
+          "COD","Adress",
+          "amount","qr","rial","kd","riyal","whatsapp","Amount","974","965","bd","XL","#","large",
+        "Ref","size 41"];
+
+        var message = inputBox.value;
+
+        // Remove symbols ":" and "+"
+        message = message.replace(/[.:+]/g, '');
+
+        // Remove specified keywords
+        keywords.forEach(function (keyword) {
+          var regex = new RegExp('\\b' + keyword + '\\b', 'gi');
+          message = message.replace(regex, '');
+        });
+
+        // Update the modified message box
+        modifiedBox.value = message;
+      }
+
+      function clearContent() {
+        var inputBox = document.getElementById("input-box");
+        var modifiedBox = document.getElementById("modified-box");
+
+        inputBox.value = "";
+        modifiedBox.value = "";
+      }
+    </script>
+
+
+  </head><center>
+  <body>
+<body style="background-color:powderblue;">
+    <h1><center>Software for entries</center></h1>
+    <textarea id="input-box" rows="5" cols="30" placeholder="Enter your message here"></textarea>
+
+    <button onclick="removeMessages()">Remove Extra </button>
+    <button onclick="clearContent()">Clear</button>
+
+    <h2><center>New Message </center></h2>
+    <textarea id="modified-box" readonly></textarea>
+  </body></center>
+</html>
